@@ -2,11 +2,9 @@ import express from 'express';
 import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
 import bcrypt from 'bcryptjs';
-import cors from 'cors';
 import fs from 'fs';
 import path from 'path';
 import https from 'https';
-import helmet from 'helmet';
 import jwt from 'jsonwebtoken'; 
 
 import { uploadImage } from './cloud.js';
@@ -21,7 +19,6 @@ import { OfficialsRouter } from './Officials.js';
 import { HouseholdRouter } from './Household.js';
 import { OfficialsLoginRouter } from './Officials_login.js';
 import { BlotterRouter } from './Blotter.js'; 
-// NEW: Imported the separated Profile router
 import { ProfileRouter } from './Profile.js';
 
 dotenv.config();
@@ -56,7 +53,6 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY
 
 // ==========================================
 // 1. JWT AUTHENTICATION MIDDLEWARE
-// (Defined here FIRST so it can be passed as a function to routers)
 // ==========================================
 export const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
@@ -72,31 +68,11 @@ export const authenticateToken = (req, res, next) => {
 };
 
 // ==========================================
-// 2. GLOBAL MIDDLEWARE & SECURITY HEADERS
+// REMOVED: CORS & EXPRESS.JSON (Now handled globally in server.js)
 // ==========================================
-router.use(helmet({
-  crossOriginResourcePolicy: { policy: "cross-origin" }, 
-  contentSecurityPolicy: false, 
-}));
-
-const corsOptions = {
-  origin: [
-    'http://localhost:5173', 
-    'http://127.0.0.1:5173', 
-    'https://harbor-extremely-collect-use.trycloudflare.com'
-  ], 
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'x-user-role'],
-  credentials: true,
-  optionsSuccessStatus: 200
-};
-
-router.use(cors(corsOptions)); 
-router.use(express.json({ limit: '30mb' }));
-router.use(express.urlencoded({ extended: true, limit: '30mb' }));
 
 // ==========================================
-// 3. SECURITY HELPERS
+// 2. SECURITY HELPERS
 // ==========================================
 const verifyPassword = (inputPassword, storedPassword) => {
   if (!inputPassword || !storedPassword) return false;
@@ -107,7 +83,7 @@ const verifyPassword = (inputPassword, storedPassword) => {
 };
 
 // ==========================================
-// 4. AUTHENTICATION & LOGIN
+// 3. AUTHENTICATION & LOGIN
 // ==========================================
 router.post('/login', async (req, res) => {
   try {
@@ -164,8 +140,7 @@ router.post('/login', async (req, res) => {
 });
 
 // ==========================================
-// 5. INITIALIZE PROTECTED MODULES
-// (Passing authenticateToken explicitly to prevent TypeError)
+// 4. INITIALIZE PROTECTED MODULES
 // ==========================================
 HouseholdRouter(router, supabase, authenticateToken);
 documentRouter(router, supabase); 
@@ -176,12 +151,10 @@ ResidentsRecordRouter(router, supabase);
 OfficialsRouter(router, supabase, authenticateToken); 
 OfficialsLoginRouter(router, supabase); 
 BlotterRouter(router, supabase, authenticateToken); 
-
-// NEW: Initialize the isolated Profile router
 ProfileRouter(router, supabase, authenticateToken);
 
 // ==========================================
-// 6. ANNOUNCEMENTS
+// 5. ANNOUNCEMENTS
 // ==========================================
 router.get('/announcements', async (req, res) => {
     try {
@@ -261,7 +234,7 @@ router.delete('/announcements/:id', authenticateToken, async (req, res) => {
 });
 
 // ==========================================
-// 7. OTHER ROUTES (Accounts, Stats)
+// 6. OTHER ROUTES (Accounts, Stats)
 // ==========================================
 router.patch('/accounts/reset/:id', authenticateToken, async (req, res) => {
   try {
