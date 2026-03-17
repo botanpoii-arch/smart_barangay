@@ -1,0 +1,237 @@
+/* =========================================
+   AUDIT LOG / SYSTEMATIC TABLE UI
+   ========================================= */
+
+.AUDIT_PAGE_WRAP {
+  height: 100%;
+  width: 100%;
+  background-color: #f8fafc; /* Clean, light professional gray */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.AUDIT_MAIN_CONTAINER {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px;
+  overflow: hidden;
+  max-width: 1600px; /* Wider for table data */
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 20px;
+}
+
+/* --- HEADER --- */
+.AUDIT_HEADER {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.AUDIT_TITLE {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.02em;
+}
+
+.AUDIT_SUB {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* --- ACTIONS BUTTONS --- */
+.AUDIT_ACTIONS {
+  display: flex;
+  gap: 12px;
+}
+
+.AUDIT_EXPORT_BTN {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.AUDIT_EXPORT_BTN:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+.AUDIT_VERIFY_BTN {
+  background: #0f172a;
+  border: none;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.AUDIT_VERIFY_BTN:hover:not(:disabled) {
+  background: #334155;
+}
+
+.AUDIT_VERIFY_BTN.VERIFYING {
+  background: #f59e0b;
+  cursor: wait;
+}
+
+/* --- TOOLBAR & FILTERS --- */
+.AUDIT_TOOLBAR {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.AUDIT_SEARCH {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 350px;
+  background: #f8fafc;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+}
+
+.AUDIT_SEARCH i {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.AUDIT_SEARCH input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 0.9rem;
+  color: #1e293b;
+  background: transparent;
+}
+
+.AUDIT_SEARCH input::placeholder {
+  color: #94a3b8;
+}
+
+.AUDIT_DATE_FILTER {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.AUDIT_DATE_FILTER input[type="date"] {
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 6px 10px;
+  outline: none;
+  color: #1e293b;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.CLEAR_DATE_BTN {
+  background: #fee2e2;
+  border: none;
+  color: #ef4444;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+}
+
+.CLEAR_DATE_BTN:hover {
+  background: #fecaca;
+}
+
+/* --- TABLE CONTAINER & GRID --- */
+.AUDIT_TABLE_CONTAINER {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  overflow-y: auto;
+  overflow-x: auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.AUDIT_TABLE_CONTAINER table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+/* Table Headers */
+.AUDIT_TABLE_CONTAINER th {
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 14px 16px;
+  border-bottom: 2px solid #cbd5e1;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  letter-spacing: 0.05em;
+}
+
+/* Table Cells */
+.AUDIT_TABLE_CONTAINER td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.85rem;
+  color: #1e293b;
+  vertical-align: middle;
+}
+
+.AUDIT_TABLE_CONTAINER tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.AUDIT_TABLE_CONTAINER tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* --- EMPTY / LOADING STATES --- */
+.AUDIT_TABLE_CONTAINER td[colspan="6"] {
+  text-align: center;
+  padding: 60px 20px;
+  color: #64748b;
+  font-style: italic;
+  font-size: 0.95rem;
+}

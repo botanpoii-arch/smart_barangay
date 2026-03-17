@@ -1,0 +1,433 @@
+/* --- 1. THEME VARIABLES --- */
+:root {
+    /* LIGHT MODE COLORS */
+    --HP-bg-body: #f8fafc;
+    --HP-bg-card: #ffffff;
+    --HP-surface-hover: #f1f5f9;
+    --HP-text-primary: #1e293b;
+    --HP-text-secondary: #64748b;
+    --HP-border: #e2e8f0;
+    --HP-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    
+    /* SYSTEM COLORS (Fixed) */
+    --HP-primary: #2563eb;
+    --HP-primary-hover: #1d4ed8;
+    --HP-danger: #ef4444;
+    --HP-danger-hover: #fee2e2;
+}
+
+[data-theme='dark'] {
+    /* DARK MODE COLORS */
+    --HP-bg-body: #0f172a;
+    --HP-bg-card: #1e293b;
+    --HP-surface-hover: #334155;
+    --HP-text-primary: #f8fafc;
+    --HP-text-secondary: #94a3b8;
+    --HP-border: #334155;
+    --HP-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+/* --- 2. LAYOUT WRAPPERS --- */
+.HP_PAGE_WRAPPER {
+    height: 100%;
+    width: 100%;
+    background-color: var(--HP-bg-body);
+    font-family: 'Inter', sans-serif;
+    color: var(--HP-text-primary);
+    transition: background 0.3s ease;
+}
+
+.HP_MAIN_CONTAINER {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* --- 3. HEADER SECTION --- */
+.HP_PAGE_HEADER {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.HP_PAGE_TITLE {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--HP-text-primary);
+    margin: 0;
+}
+
+.HP_PAGE_SUBTITLE {
+    color: var(--HP-text-secondary);
+    margin: 0.25rem 0 0 0;
+    font-size: 0.95rem;
+}
+
+.HP_ADD_NEW_BTN {
+    background-color: var(--HP-text-primary);
+    color: var(--HP-bg-card);
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: opacity 0.2s;
+}
+
+.HP_ADD_NEW_BTN:hover { opacity: 0.9; }
+
+/* --- 4. TABLE CARD & TOOLBAR --- */
+.HP_TABLE_CARD_CONTAINER {
+    background: var(--HP-bg-card);
+    border-radius: 12px;
+    box-shadow: var(--HP-shadow);
+    border: 1px solid var(--HP-border);
+    overflow: hidden;
+}
+
+.HP_TOOLBAR_WRAPPER {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--HP-border);
+}
+
+.HP_TABS_LIST { display: flex; gap: 0.5rem; }
+
+.HP_TAB_TRIGGER {
+    background: transparent;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--HP-text-secondary);
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.HP_TAB_TRIGGER:hover { background-color: var(--HP-surface-hover); }
+
+.HP_TAB_ACTIVE {
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--HP-primary);
+}
+
+.HP_COUNT_BADGE {
+    background-color: var(--HP-surface-hover);
+    padding: 2px 6px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    margin-left: 6px;
+}
+
+/* --- 5. SEARCH SECTION --- */
+.HP_SEARCH_SECTION {
+    padding: 1rem 1.5rem;
+    background-color: var(--HP-bg-body);
+    border-bottom: 1px solid var(--HP-border);
+}
+
+.HP_SEARCH_INPUT_WRAPPER {
+    position: relative;
+    max-width: 400px;
+}
+
+.HP_SEARCH_ICON {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--HP-text-secondary);
+}
+
+.HP_SEARCH_FIELD {
+    width: 100%;
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    border: 1px solid var(--HP-border);
+    border-radius: 8px;
+    outline: none;
+    background: var(--HP-bg-card);
+    color: var(--HP-text-primary);
+}
+
+/* --- 6. MAIN HOUSEHOLD TABLE --- */
+.HP_DATA_TABLE_WRAPPER { overflow-x: auto; }
+
+.HP_HOUSE_TABLE {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+}
+
+.HP_HOUSE_TABLE th {
+    text-align: left;
+    padding: 1rem 1.5rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--HP-text-secondary);
+    background-color: var(--HP-surface-hover);
+}
+
+.HP_TB_ROW { border-bottom: 1px solid var(--HP-border); transition: background 0.2s; }
+.HP_TB_ROW:hover { background-color: var(--HP-surface-hover); }
+
+.HP_HH_NUM {
+    font-family: 'Monaco', 'Consolas', monospace;
+    background: #eef2ff;
+    color: #4338ca;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.HP_PRIMARY_NAME { 
+    font-weight: 600; 
+    color: var(--HP-primary); 
+    cursor: pointer;
+    transition: text-decoration 0.2s;
+}
+.HP_PRIMARY_NAME:hover { text-decoration: underline; }
+
+.HP_MEMBER_PILL {
+    background-color: var(--HP-surface-hover);
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.85rem;
+    color: var(--HP-text-primary);
+    font-weight: 500;
+    border: 1px solid var(--HP-border);
+}
+
+.HP_BADGE_CONTAINER { display: flex; gap: 6px; }
+
+.HP_BADGE_4PS { background: #fef9c3; color: #a16207; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; }
+.HP_BADGE_INDIGENT { background: #fee2e2; color: #991b1b; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; }
+
+.HP_ACTION_ICON_BTN {
+    background: none;
+    border: 1px solid var(--HP-border);
+    padding: 8px;
+    border-radius: 8px;
+    color: var(--HP-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.HP_ACTION_ICON_BTN:hover { 
+    color: #d97706; 
+    border-color: #f59e0b;
+    background: #fffbeb;
+}
+
+/* --- 7. PAGINATION BAR (NEW) --- */
+.HP_PAGINATION_BAR {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--HP-bg-card);
+    border-top: 1px solid var(--HP-border);
+}
+
+.HP_PAGINATION_INFO {
+    font-size: 0.875rem;
+    color: var(--HP-text-secondary);
+}
+
+.HP_NAV_GROUP {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.HP_NAV_BTN {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--HP-border);
+    background: var(--HP-bg-card);
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--HP-text-primary);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.HP_NAV_BTN:hover:not(:disabled) {
+    background-color: var(--HP-surface-hover);
+    border-color: var(--HP-text-secondary);
+}
+
+.HP_NAV_BTN:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* --- 8. MODAL SYSTEM --- */
+.HP_MODAL_OVERLAY {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.HP_MODAL_CARD {
+    background: var(--HP-bg-card);
+    width: 95%;
+    max-width: 800px;
+    max-height: 90vh;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.HP_MODAL_HEADER {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--HP-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.HP_MODAL_TITLE { font-size: 1.25rem; font-weight: 700; color: var(--HP-text-primary); margin: 0; }
+
+.HP_MODAL_CLOSE_X {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--HP-text-secondary);
+    cursor: pointer;
+}
+
+.HP_MODAL_SCROLL_BODY { padding: 1.5rem; overflow-y: auto; }
+
+/* --- 9. FORM ELEMENTS --- */
+.HP_SECTION_INDICATOR {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--HP-primary);
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid var(--HP-surface-hover);
+    padding-bottom: 8px;
+}
+
+.HP_FORM_GRID { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2.5rem; }
+.HP_GRID_FULL { grid-column: span 2; }
+
+.HP_FORM_LABEL { font-size: 0.875rem; font-weight: 600; color: var(--HP-text-primary); margin-bottom: 6px; display: block; }
+
+.HP_FORM_INPUT, .HP_FORM_SELECT, .HP_MEMBER_FIELD {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--HP-border);
+    border-radius: 8px;
+    background: var(--HP-bg-card);
+    color: var(--HP-text-primary);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.HP_FORM_INPUT:focus { border-color: var(--HP-primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+
+/* --- 10. COMBOBOX & SEARCH --- */
+.HP_COMBOBOX_WRAP { position: relative; }
+
+.HP_DROP_RESULTS {
+    position: absolute;
+    top: calc(100% + 5px);
+    width: 100%;
+    background: var(--HP-bg-card);
+    border: 1px solid var(--HP-border);
+    border-radius: 10px;
+    z-index: 100;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.HP_DROP_ITEM { 
+    padding: 12px 15px; 
+    cursor: pointer; 
+    border-bottom: 1px solid var(--HP-border);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.HP_DROP_ITEM:hover { background: var(--HP-surface-hover); }
+.HP_DROP_NAME { font-weight: 600; font-size: 0.9rem; }
+.HP_DROP_SUB { font-size: 0.75rem; color: var(--HP-text-secondary); }
+
+/* --- 11. MEMBERS TABLE --- */
+.HP_MEMBERS_TABLE { width: 100%; border-collapse: collapse; }
+.HP_MEMBERS_BODY tr { border-bottom: 1px solid var(--HP-border); }
+
+.HP_REMOVE_ROW_BTN {
+    background: none;
+    border: none;
+    color: var(--HP-danger);
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+.HP_ADD_ROW_TRIGGER {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 12px;
+    border: 2px dashed var(--HP-border);
+    background: transparent;
+    color: var(--HP-text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+.HP_ADD_ROW_TRIGGER:hover { border-color: var(--HP-primary); color: var(--HP-primary); background: rgba(37, 99, 235, 0.05); }
+
+/* --- 12. FOOTER --- */
+.HP_MODAL_FOOTER {
+    padding: 1.5rem;
+    border-top: 1px solid var(--HP-border);
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.HP_CANCEL_BTN { 
+    padding: 0.75rem 1.5rem; 
+    border: 1px solid var(--HP-border); 
+    background: none; 
+    color: var(--HP-text-secondary); 
+    cursor: pointer; 
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.HP_SAVE_BTN { 
+    padding: 0.75rem 2rem; 
+    border: none; 
+    background: var(--HP-primary); 
+    color: white; 
+    cursor: pointer; 
+    border-radius: 8px; 
+    font-weight: 700;
+    transition: transform 0.1s;
+}
+.HP_SAVE_BTN:active { transform: scale(0.98); }
+.HP_SAVE_BTN:disabled { opacity: 0.6; cursor: wait; }
+
+.HP_EMPTY_CELL { text-align: center; padding: 4rem; color: var(--HP-text-secondary); font-style: italic; }

@@ -1,0 +1,463 @@
+/* =========================================
+   1. BLOTTER SPECIFIC VARIABLES
+   ========================================= */
+:root {
+  /* Inherits global vars (bg-main, text-primary, etc.) from App.css / Resident.css */
+  
+  /* Local Blotter Colors */
+  --blot-red: #dc2626;       /* The Red Button Color */
+  --blot-red-hover: #b91c1c;
+  --blot-blue: #2563eb;
+  --blot-green: #16a34a;
+  --blot-gray: #64748b;
+  
+  --bg-icon-red: #fef2f2;
+  --text-icon-red: #ef4444;
+  
+  --bg-icon-blue: #eff6ff;
+  --text-icon-blue: #3b82f6;
+  
+  --bg-icon-green: #f0fdf4;
+  --text-icon-green: #22c55e;
+}
+
+/* Dark Mode Overrides for Icons */
+[data-theme="dark"] {
+  --bg-icon-red: #450a0a;
+  --text-icon-red: #f87171;
+  
+  --bg-icon-blue: #172554;
+  --text-icon-blue: #60a5fa;
+  
+  --bg-icon-green: #052e16;
+  --text-icon-green: #4ade80;
+}
+
+/* =========================================
+   2. PAGE LAYOUT
+   ========================================= */
+.BLOT_PAGE_WRAP {
+  padding: 2rem;
+  background-color: var(--bg-main);
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.BLOT_MAIN_CONTAINER {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* HEADER */
+.BLOT_HEADER_FLEX {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.BLOT_PAGE_TITLE {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.BLOT_PAGE_SUB {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Red Action Button */
+.BLOT_ADD_BTN {
+  background-color: var(--blot-red);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2);
+}
+
+.BLOT_ADD_BTN:hover { background-color: var(--blot-red-hover); }
+.BLOT_ADD_BTN:active { transform: scale(0.98); }
+
+/* =========================================
+   3. STATS CARDS
+   ========================================= */
+.BLOT_STATS_GRID {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.BLOT_STAT_CARD {
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.BLOT_STAT_CARD:hover {
+  border-color: var(--border-color); /* Static look */
+  transform: translateY(-2px);
+}
+
+.BLOT_STAT_INFO { display: flex; flex-direction: column; gap: 0.25rem; }
+.BLOT_STAT_NUM { font-size: 2rem; font-weight: 800; color: var(--text-primary); line-height: 1; }
+.BLOT_STAT_LABEL { font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* Icon Circles */
+.BLOT_STAT_ICON_WRAP {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.ICON_RED { background-color: var(--bg-icon-red); color: var(--text-icon-red); }
+.ICON_BLUE { background-color: var(--bg-icon-blue); color: var(--text-icon-blue); }
+.ICON_GREEN { background-color: var(--bg-icon-green); color: var(--text-icon-green); }
+
+/* =========================================
+   4. TABLE CONTAINER & TABS
+   ========================================= */
+.BLOT_TABLE_CONTAINER {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Tabs Row */
+.BLOT_TABS_ROW {
+  display: flex;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  gap: 2rem;
+}
+
+.BLOT_TAB_BTN {
+      padding: 8px 18px;
+    border: none;
+    background: transparent;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.BLOT_TAB_BTN:hover { color: var(--text-primary); }
+
+/* Active Tab Indicator (Red Line) */
+.BLOT_TAB_BTN.ACTIVE {
+  color: var(--blot-red);
+  font-weight: 700;
+}
+
+.BLOT_TAB_BTN.ACTIVE::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--blot-red);
+  border-radius: 3px 3px 0 0;
+}
+
+/* Search Row */
+.BLOT_SEARCH_ROW {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.BLOT_SEARCH_INPUT {
+  width: 100%;
+  padding: 0.6rem 1rem 0.6rem 2.5rem; /* Space for icon */
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+.BLOT_SEARCH_INPUT:focus { outline: none; border-color: var(--text-secondary); }
+
+.BLOT_SYNC_LABEL {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  animation: pulse 1.5s infinite;
+}
+
+/* =========================================
+   5. TABLE STYLING
+   ========================================= */
+.BLOT_TABLE_WRAP { width: 100%; overflow-x: auto; }
+.BLOT_TABLE_MAIN { width: 100%; border-collapse: collapse; text-align: left; }
+
+.BLOT_TABLE_MAIN th {
+  padding: 0.85rem 1.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  background-color: var(--hover-bg);
+  border-bottom: 1px solid var(--border-color);
+  letter-spacing: 0.05em; 
+}
+
+.BLOT_TABLE_MAIN td {
+  padding: 1.15rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  vertical-align: middle;
+  
+}
+
+.BLOT_CASE_NUMBER{
+    font-family: 'JetBrains Mono', 'Menlo', monospace;
+    font-weight: 700;
+    color: #475569;
+    background: #ededed;
+    padding: 2px 10px;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    font-size: 0.8rem;
+}
+
+.BLOT_TABLE_MAIN tr:hover { background-color: var(--hover-bg); }
+
+/* Status Badges */
+.BLOT_STATUS_BADGE {
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.STATUS_ACTIVE { background-color: #fee2e2; color: #b91c1c; }
+.STATUS_HEARING { background-color: #dbeafe; color: #1e40af; }
+.STATUS_SETTLED { background-color: #dcfce7; color: #15803d; }
+.STATUS_ARCHIVED { background-color: #f3f4f6; color: #4b5563; }
+
+/* Dark Mode Badges */
+[data-theme="dark"] .STATUS_ACTIVE { background-color: #450a0a; color: #f87171; border: 1px solid #7f1d1d; }
+[data-theme="dark"] .STATUS_HEARING { background-color: #172554; color: #60a5fa; border: 1px solid #1e3a8a; }
+[data-theme="dark"] .STATUS_SETTLED { background-color: #052e16; color: #4ade80; border: 1px solid #14532d; }
+[data-theme="dark"] .STATUS_ARCHIVED { background-color: #374151; color: #9ca3af; border: 1px solid #4b5563; }
+
+/* Actions */
+.BLOT_ACTION_ICON {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: 8px;
+  border-radius: 4px;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+.BLOT_ACTION_ICON:hover { background-color: var(--bg-main); color: var(--text-primary); }
+
+/* =========================================
+   6. PAGINATION & UTILS
+   ========================================= */
+.BLOT_PAGINATION {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+}
+
+.BLOT_PAGE_INFO { font-size: 0.85rem; color: var(--text-primary); font-weight: 600; }
+
+.BLOT_PAGE_BTN {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-secondary);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.BLOT_PAGE_BTN:disabled { opacity: 0.5; cursor: default; background-color: var(--bg-main); }
+.BLOT_PAGE_BTN:not(:disabled):hover { border-color: var(--text-secondary); color: var(--text-primary); }
+
+.BLOT_RETRY_BTN {
+  margin-top: 10px;
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* Modal Overlay (Basic) */
+.BLOT_MODAL_OVERLAY {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+
+/* =========================================
+   7. MISSING STATUS BADGES (REJECTED)
+   ========================================= */
+.STATUS_REJECTED { 
+  background-color: #fef2f2; 
+  color: #ef4444; 
+  border: 1px solid #fecaca; 
+}
+
+/* Dark Mode Rejected */
+[data-theme="dark"] .STATUS_REJECTED { 
+  background-color: #450a0a; 
+  color: #f87171; 
+  border: 1px solid #7f1d1d; 
+}
+
+
+/* =========================================
+   8. SIMPLE MODALS (Hearing & Rejection)
+   ========================================= */
+
+/* Re-using the Overlay style to ensure it covers the screen */
+.DOC_FILE_OVERLAY {
+  position: fixed;
+  top: 0; left: 0; 
+  width: 100vw; height: 100vh;
+  background-color: rgba(15, 23, 42, 0.6); /* Dark dim */
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 6000; /* Higher than everything */
+  animation: fadeIn 0.2s ease-out;
+}
+
+.BLOT_SIMPLE_MODAL {
+  background-color: var(--bg-card);
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.BLOT_SIMPLE_MODAL h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.BLOT_SIMPLE_MODAL p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Modal Inputs */
+.BLOT_SIMPLE_MODAL input[type="date"],
+.BLOT_SIMPLE_MODAL input[type="time"],
+.BLOT_SIMPLE_MODAL textarea {
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.BLOT_SIMPLE_MODAL textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.BLOT_SIMPLE_MODAL input:focus,
+.BLOT_SIMPLE_MODAL textarea:focus {
+  border-color: var(--blot-blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Mobile Adjustments for Modals */
+@media (max-width: 640px) {
+  .BLOT_SIMPLE_MODAL {
+    width: 90%;
+    padding: 1.5rem;
+  }
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .BLOT_STATS_GRID { grid-template-columns: 1fr; }
+  .BLOT_SEARCH_ROW { flex-direction: column; align-items: stretch; }
+  .BLOT_SEARCH_INPUT { width: 100%; }
+}
+

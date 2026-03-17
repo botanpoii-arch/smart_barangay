@@ -1,0 +1,300 @@
+/* --- 1. WIDE PAGE CONTAINER --- */
+.PF_WIDE_CONTAINER {
+  width: 100%;
+  /* Spacing: Top 3rem, Sides 30px, Bottom 6rem */
+  padding: 3rem 30px 6rem 30px; 
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  background-color: var(--CONTENT-bg);
+  transition: padding 0.3s ease;
+}
+
+/* --- 2. PAGE HEADER TEXT --- */
+.PF_PAGE_HEADER {
+  border-bottom: 1px solid var(--L-border);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.PF_PAGE_HEADER h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem 0;
+  color: var(--TEXT-main);
+  letter-spacing: -0.02em;
+}
+
+.PF_PAGE_HEADER p {
+  color: var(--TEXT-sub);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* --- 3. SECTIONS & CARDS --- */
+.PF_SETTING_SECTION {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.PF_SECTION_LABEL {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--TEXT-sub);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-left: 5px;
+}
+
+.PF_CONTENT_CARD {
+  background: var(--L-bg);
+  border: 1px solid var(--L-border);
+  border-radius: 12px;
+  padding: 2.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+/* --- 4. PROFILE HEADER (FIX FOR SQUISHED AVATAR) --- */
+.PF_PROFILE_HEADER {
+  display: flex; 
+  align-items: center; 
+  gap: 1.5rem; 
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--L-border); 
+}
+
+/* Fixed Avatar Size */
+.PF_AVATAR_WRAPPER {
+  position: relative;
+  width: 80px;  
+  height: 80px; 
+  min-width: 80px; 
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid var(--L-border);
+}
+
+.PF_AVATAR_PLACEHOLDER {
+  width: 100%;
+  height: 100%;
+  background-color: #eff6ff;
+  color: #3b82f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.PF_AVATAR_OVERLAY {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.PF_AVATAR_WRAPPER:hover .PF_AVATAR_OVERLAY { opacity: 1; }
+
+.PF_USER_INFO {
+  display: flex;
+  flex-direction: column;
+}
+
+.PF_USER_DISPLAY_NAME {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--TEXT-main);
+  line-height: 1.2;
+}
+
+.PF_USER_DISPLAY_ROLE {
+  font-size: 0.95rem;
+  color: var(--TEXT-sub);
+  margin-top: 4px;
+}
+
+/* --- 5. FORM INPUTS --- */
+.PF_FORM_GRID {
+  display: grid;
+  /* UPDATED: Uses min() to ensure columns don't overflow on small mobile */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+  gap: 2rem;
+}
+
+.PF_INPUT_GROUP {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.PF_INPUT_GROUP label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--TEXT-sub);
+  text-transform: uppercase;
+  margin-left: 2px;
+}
+
+.PF_CLEAN_INPUT {
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--L-border);
+  background-color: var(--L-bg);
+  color: var(--TEXT-main);
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.PF_CLEAN_INPUT:focus {
+  outline: none;
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.PF_DISABLED {
+  background-color: var(--CONTENT-bg);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* --- 6. THEME BUTTONS --- */
+.PF_THEME_GRID {
+  display: grid;
+  /* UPDATED: Uses min() for mobile safety */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 1.5rem;
+}
+
+.PF_THEME_VISUAL_BTN {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.PF_THEME_PREVIEW {
+  width: 100%;
+  aspect-ratio: 16/10;
+  border: 2px solid var(--L-border);
+  border-radius: 12px;
+  background: var(--CONTENT-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.PF_THEME_VISUAL_BTN.ACTIVE .PF_THEME_PREVIEW {
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+.PF_THEME_VISUAL_BTN span { font-weight: 600; color: var(--TEXT-sub); }
+.PF_THEME_VISUAL_BTN.ACTIVE span { color: var(--TEXT-main); font-weight: 800; }
+
+/* Mockup Windows */
+.PF_MOCK_WINDOW { width: 75%; height: 70%; background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; display: flex; overflow: hidden; }
+.DARK_WINDOW { background: #1e293b; border-color: #334155; }
+.PF_MOCK_SIDEBAR { width: 30%; background: #f1f5f9; border-right: 1px solid #e2e8f0; }
+.DARK_WINDOW .PF_MOCK_SIDEBAR { background: #334155; border-color: #475569; }
+.PF_MOCK_CONTENT { flex: 1; padding: 10px; display: flex; flex-direction: column; gap: 6px; }
+.PF_MOCK_LINE { height: 4px; background: #e2e8f0; border-radius: 2px; }
+.DARK_WINDOW .PF_MOCK_LINE { background: #475569; }
+
+/* --- 7. ACTION BUTTONS --- */
+.PF_ACTIONS {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem; /* Added gap to prevent sticking */
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--L-border);
+  padding-top: 1.5rem;
+}
+
+.PF_BTN_EDIT {
+  background-color: var(--TEXT-main); 
+  color: var(--L-bg);
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.PF_BTN_SAVE {
+  background-color: var(--color-brand);
+  color: white;
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.PF_BTN_CANCEL {
+  background-color: transparent;
+  color: var(--TEXT-sub);
+  border: 1px solid var(--L-border);
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* --- 8. NEW RESPONSIVE OVERRIDES --- */
+@media (max-width: 768px) {
+  .PF_WIDE_CONTAINER {
+    padding: 2rem 15px 4rem 15px; /* Smaller side margins */
+    gap: 1.5rem;
+  }
+
+  .PF_PAGE_HEADER h1 {
+    font-size: 1.75rem; /* Scale down header */
+  }
+
+  .PF_CONTENT_CARD {
+    padding: 1.5rem; /* Compact cards */
+  }
+
+  .PF_PROFILE_HEADER {
+    flex-direction: column; /* Stack avatar and text */
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .PF_ACTIONS {
+    flex-direction: column-reverse; /* Stack buttons vertically for thumb reach */
+    gap: 0.75rem;
+  }
+
+  .PF_BTN_EDIT, .PF_BTN_SAVE, .PF_BTN_CANCEL {
+    width: 100%; /* Full width buttons on mobile */
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .PF_PAGE_HEADER h1 {
+    font-size: 1.5rem;
+  }
+  
+  .PF_THEME_GRID {
+    grid-template-columns: 1fr; /* One theme preview per row on tiny screens */
+  }
+}

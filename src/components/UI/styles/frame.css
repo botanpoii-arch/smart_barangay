@@ -1,0 +1,178 @@
+/* src/components/UI/styles/Frame.css */
+
+:root {
+  /* Engineers Hill Professional Theme */
+  --L-bg: #ffffff;
+  --L-border: #e2e8f0;
+  --CONTENT-bg: #f1f5f9; /* Slightly darker for better card contrast */
+  --TEXT-main: #0f172a; 
+  --TEXT-sub: #64748b;
+  --color-brand: #3b82f6;
+  
+  /* Layout Geometry - STABILIZED */
+  --L-width: 280px;      /* Slightly wider for text breathing room */
+  --L-header-h: 70px;    /* Increased to 70px to match standard dashboard headers */
+}
+
+[data-theme='dark'] {
+  --L-bg: #1e293b;
+  --L-border: #334155;
+  --CONTENT-bg: #0f172a;
+  --TEXT-main: #f8fafc;
+  --TEXT-sub: #94a3b8;
+}
+
+/* --- 2. GLOBAL RESET --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
+body {
+  background-color: var(--CONTENT-bg);
+  color: var(--TEXT-main);
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow: hidden; 
+  height: 100vh;
+}
+
+/* --- 3. THE "L-FRAME" GEOMETRY --- */
+.FRAME_WRAPPER {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.FRAME_SIDEBAR {
+  width: var(--L-width);
+  height: 100vh;
+  background-color: var(--L-bg);
+  border-right: 1px solid var(--L-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+/* MAIN COLUMN */
+.FRAME_MAIN_COLUMN {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-width: 0; /* Prevents flex children from stretching the container */
+}
+
+/* TOPBAR */
+.FRAME_TOPBAR {
+  height: var(--L-header-h); 
+  background-color: var(--L-bg);
+  border-bottom: 1px solid var(--L-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem; /* Adjusted for tighter alignment */
+  flex-shrink: 0;
+}
+
+/* --- 4. SIDEBAR ELEMENTS --- */
+.FRAME_LOGO_AREA {
+  height: var(--L-header-h); /* Must match Topbar height exactly */
+  display: flex;
+  align-items: center;
+  padding: 0 1.25rem;
+  border-bottom: 1px solid var(--L-border); 
+}
+
+.FRAME_LOGO_TEXT {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--TEXT-main);
+  letter-spacing: -0.02em;
+}
+
+.FRAME_NAV_AREA {
+  flex: 1;
+  padding: 1.5rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* More space between items to avoid looking cramped */
+  overflow-y: auto;
+}
+
+.FRAME_MENU_ITEM {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  color: var(--TEXT-sub);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.FRAME_MENU_ITEM:hover {
+  background-color: var(--CONTENT-bg);
+  color: var(--TEXT-main);
+}
+
+.FRAME_MENU_ACTIVE {
+  background-color: var(--TEXT-main) !important;
+  color: var(--L-bg) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 5. TOPBAR CONTENT --- */
+.FRAME_USER {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.FRAME_USER_TEXT {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.FRAME_USER_NAME {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--TEXT-main);
+}
+
+.FRAME_USER_ROLE {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--TEXT-sub);
+}
+
+.TB_LOGOUT_BTN {
+  padding: 6px 14px;
+  background: var(--CONTENT-bg);
+  border: 1px solid var(--L-border);
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.TB_LOGOUT_BTN:hover {
+  background: #fee2e2; /* Light red hover for logout */
+  color: #ef4444;
+  border-color: #fca5a5;
+}
+
+/* --- 6. INNER CONTENT AREA --- */
+.FRAME_CONTENT_AREA {
+  flex: 1;
+  background-color: var(--CONTENT-bg);
+  overflow-y: auto; 
+  padding: 1.5rem; /* Padding for the main dashboard view */
+}

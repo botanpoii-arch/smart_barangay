@@ -1,0 +1,339 @@
+/* =========================================
+   1. THEME VARIABLES
+   ========================================= */
+:root {
+  /* LIGHT THEME */
+  --bg-main: #f8f9fa;       
+  --bg-card: #ffffff;       
+  --text-primary: #0f172a;  /* Slate-900 */
+  --text-secondary: #64748b;/* Slate-500 */
+  --text-muted: #94a3b8;    /* Slate-400 */
+  --border-color: #e2e8f0;  /* Slate-200 */
+  --input-bg: #ffffff;
+  --hover-bg: #f8fafc;      
+  
+  /* ACCENT COLORS */
+  --primary: #0f172a;       
+  --accent-blue: #3b82f6;
+  --accent-pink: #ec4899;
+}
+
+/* DARK THEME OVERRIDE */
+[data-theme="dark"] {
+  --bg-main: #020617;       /* Slate-950 */
+  --bg-card: #1e293b;       /* Slate-800 */
+  --text-primary: #f8fafc;  /* Slate-50 */
+  --text-secondary: #94a3b8;/* Slate-400 */
+  --text-muted: #64748b;    /* Slate-500 */
+  --border-color: #334155;  /* Slate-700 */
+  --input-bg: #0f172a;      /* Slate-900 */
+  --hover-bg: #334155;      /* Slate-700 */
+}
+
+/* =========================================
+   2. GLOBAL LAYOUT & ENTRANCE ANIMATION
+   ========================================= */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.RES_PAGE_WRAP {
+  padding: 2rem;
+  background-color: var(--bg-main);
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.RES_MAIN_CONTAINER {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =========================================
+   3. STATS PANEL & ANALYTICS
+   ========================================= */
+.RES_STATS_PANEL {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr auto; 
+  gap: 2rem;
+  background: var(--bg-card);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  align-items: center;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.RES_STAT_COL { display: flex; flex-direction: column; gap: 0.5rem; }
+.RES_STAT_TITLE { font-size: 0.7rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+.RES_STAT_HIGHLIGHT { font-size: 1.25rem; font-weight: 600; color: var(--text-primary); transition: color 0.3s ease; }
+
+/* --- SMOOTH GENDER BAR ANIMATION --- */
+.RES_GENDER_WRAP { display: flex; flex-direction: column; gap: 0.5rem; width: 100%; }
+.RES_GENDER_ROW { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-secondary); font-weight: 500; }
+.RES_BAR_TRACK { width: 100%; height: 6px; background-color: var(--border-color); border-radius: 99px; overflow: hidden; }
+
+@keyframes growBar {
+  0% { width: 0; opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.RES_BAR_MALE { 
+  height: 100%; 
+  background-color: var(--accent-blue); 
+  border-radius: 99px;
+  /* Smooth easing: starts fast, lands soft */
+  animation: growBar 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.RES_BAR_FEMALE { 
+  height: 100%; 
+  background-color: var(--accent-pink); 
+  border-radius: 99px;
+  /* Staggered delay for cascading effect */
+  animation: growBar 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards;
+  opacity: 0; 
+}
+
+/* Filter Dropdown */
+.RES_FILTER_SELECT { 
+  padding: 0.6rem; 
+  border: 1px solid var(--border-color); 
+  border-radius: 6px; 
+  background-color: var(--input-bg); 
+  color: var(--text-primary); 
+  width: 100%; 
+  outline: none; 
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.RES_FILTER_SELECT:focus { border-color: var(--accent-blue); }
+
+.RES_TOTAL_COL { display: flex; flex-direction: column; align-items: center; padding-left: 2rem; border-left: 1px solid var(--border-color); transition: border-color 0.3s ease; }
+.RES_BIG_NUMBER { font-size: 2.5rem; font-weight: 800; color: var(--text-primary); line-height: 1; transition: color 0.3s ease; }
+
+/* =========================================
+   4. TABLE CONTAINER
+   ========================================= */
+.RES_TABLE_CONTAINER {
+  background: var(--bg-card);
+  border-radius: 8px; 
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; 
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.RES_SEARCH_ROW {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-card);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.RES_SEARCH_INPUT {
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  border-radius: 6px;
+  width: 300px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+.RES_SEARCH_INPUT:focus { outline: none; border-color: var(--text-secondary); }
+
+/* Loading Spinner */
+.spinner-small {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(148, 163, 184, 0.2); 
+  border-left-color: var(--accent-blue); 
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite; 
+  margin-left: 10px;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.RES_ADD_BTN {
+  background-color: var(--primary);
+  color: var(--bg-card); 
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s ease;
+}
+.RES_ADD_BTN:hover { opacity: 0.9; }
+
+/* =========================================
+   5. THE TABLE
+   ========================================= */
+.RES_TABLE_WRAP { width: 100%; overflow-x: auto; }
+.RES_TABLE_MAIN { width: 100%; border-collapse: collapse; text-align: left; }
+
+.RES_TABLE_MAIN th {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  background-color: var(--bg-main); 
+  border-bottom: 1px solid var(--border-color);
+  letter-spacing: 0.05em;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.RES_TABLE_MAIN td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  vertical-align: middle;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.RES_TABLE_MAIN tr { transition: background-color 0.15s ease; }
+.RES_TABLE_MAIN tr:hover { background-color: var(--hover-bg); }
+
+/* =========================================
+   6. PAGINATION (Fixed Chevron Distance)
+   ========================================= */
+.RES_PAGINATION {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.RES_PAGE_INFO { font-size: 0.85rem; color: var(--text-primary); font-weight: 600; }
+
+.RES_PAGE_BTN {
+  padding: 0.5rem 1.2rem; /* Wider padding */
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-secondary);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  /* INCREASED GAP FOR CHEVRON DISTANCE */
+  gap: 12px; 
+  transition: all 0.2s ease;
+}
+
+.RES_PAGE_BTN:disabled { opacity: 0.5; cursor: default; background-color: var(--bg-main); }
+.RES_PAGE_BTN:not(:disabled):hover { border-color: var(--text-secondary); color: var(--text-primary); background-color: var(--hover-bg); }
+
+/* =========================================
+   7. CELLS & BADGES
+   ========================================= */
+.RES_PROF_FLEX { display: flex; align-items: center; gap: 0.75rem; }
+.RES_AVATAR { width: 36px; height: 36px; border-radius: 50%; background: var(--bg-main); color: var(--text-secondary); border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; transition: all 0.3s ease; }
+.RES_PROF_NAME { display: flex; flex-direction: column; font-weight: 600; color: var(--text-primary); }
+.RES_PROF_NAME span { font-size: 0.75rem; color: var(--text-secondary); font-weight: 400; margin-top: 2px; }
+
+/* Badges */
+.RES_BADGE_WRAP { display: flex; gap: 4px; }
+.RES_BADGE { font-size: 0.65rem; padding: 2px 8px; border-radius: 4px; font-weight: 700; text-transform: uppercase; }
+
+/* Light Badges */
+.RES_BADGE_BLUE { background: #eff6ff; color: #1d4ed8; border: 1px solid #dbeafe; }
+.RES_BADGE_ORANGE { background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
+.RES_BADGE_PURPLE { background: #faf5ff; color: #7e22ce; border: 1px solid #f3e8ff; }
+
+/* Dark Badges */
+[data-theme="dark"] .RES_BADGE_BLUE { background: #172554; color: #60a5fa; border: 1px solid #1e3a8a; }
+[data-theme="dark"] .RES_BADGE_ORANGE { background: #451a03; color: #fb923c; border: 1px solid #7c2d12; }
+[data-theme="dark"] .RES_BADGE_PURPLE { background: #3b0764; color: #c084fc; border: 1px solid #6b21a8; }
+
+/* Status */
+.RES_STATUS_COL { display: flex; flex-direction: column; }
+.RES_STATUS_ACTIVE { color: #10b981; font-weight: 600; font-size: 0.85rem; }
+.RES_STATUS_WARN { color: #f59e0b; font-weight: 600; font-size: 0.85rem; }
+.RES_STATUS_SUB { font-size: 0.75rem; color: var(--text-muted); display: block; margin-top: 2px;}
+
+/* Actions */
+.RES_ACTION_ICON { background: transparent; border: none; cursor: pointer; padding: 6px; margin-left: 8px; border-radius: 4px; color: var(--text-muted); transition: all 0.2s ease; }
+.RES_ACTION_ICON:hover { background-color: var(--bg-main); color: var(--text-primary); }
+
+/* =========================================
+   8. ACTION DROPDOWN STYLING
+   ========================================= */
+.RES_ACTION_SELECT {
+  appearance: none; /* Removes default browser arrow */
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.4rem 2.2rem 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  
+  /* Custom Professional Chevron Arrow */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 0.9em;
+}
+
+/* Hover & Interaction */
+.RES_ACTION_SELECT:hover {
+  border-color: var(--text-secondary);
+  background-color: var(--hover-bg);
+}
+
+.RES_ACTION_SELECT:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Dropdown Menu Options Styling (Limited browser support, but improves look) */
+.RES_ACTION_SELECT option {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  padding: 10px;
+}
+
+/* Red text for Archive option specifically */
+.RES_ACTION_SELECT option[value="archive"] {
+  color: #ef4444;
+}
+
+/* Table Row Adjustment to fit dropdown better */
+.RES_TABLE_MAIN td {
+  padding: 0.8rem 1.5rem; /* Slightly tighter vertical padding */
+}
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .RES_STATS_PANEL { grid-template-columns: 1fr 1fr; }
+  .RES_TOTAL_COL { border-left: none; padding-left: 0; flex-direction: row; gap: 1rem; grid-column: span 2; border-top: 1px solid var(--border-color); padding-top: 1rem; }
+}

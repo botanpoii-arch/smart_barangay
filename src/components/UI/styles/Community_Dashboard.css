@@ -1,0 +1,308 @@
+:root {
+  --primary-blue: #2563eb;
+  --primary-dark: #1e40af;
+  --success-green: #10b981;
+  --warning-orange: #f59e0b;
+  --danger-red: #ef4444;
+  --bg-slate: #f1f5f9;
+  --text-dark: #0f172a;
+  --text-gray: #64748b;
+  --white: #ffffff;
+  --nav-primary-h: 70px;
+  --nav-secondary-h: 60px;
+  --mobile-nav-h: 65px; /* Height for mobile bottom nav */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+body { 
+  margin: 0; 
+  overflow: hidden; 
+  font-family: 'Inter', sans-serif; 
+  background-color: var(--bg-slate);
+}
+
+/* --- 0. UTILITY CLASSES FOR RESPONSIVENESS --- */
+.MOBILE_ONLY { display: none; }
+.DESKTOP_ONLY { display: flex; }
+
+/* --- 1. PAGE ROOT --- */
+.DASH_PAGE_ROOT {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  width: 100%;
+}
+
+/* --- 2. TIER 1: PRIMARY NAVIGATION --- */
+.DASH_PRIMARY_NAV {
+  height: var(--nav-primary-h);
+  background: #0f172a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  flex-shrink: 0;
+  z-index: 1000;
+  color: white;
+}
+
+.NAV_LEFT { display: flex; align-items: center; gap: 40px; height: 100%; }
+.BRAND_BOX { display: flex; align-items: center; gap: 10px; }
+.BRAND_BOX i { font-size: 1.5rem; color: var(--primary-blue); }
+.BRAND_BOX span { font-weight: 800; letter-spacing: -0.5px; font-size: 1.1rem; }
+
+.VIEW_SWITCHER { display: flex; gap: 5px; height: 100%; align-items: center; }
+.VIEW_SWITCHER button {
+  background: transparent; border: none; color: #94a3b8;
+  padding: 8px 16px; border-radius: 8px; cursor: pointer;
+  font-weight: 600; transition: 0.2s; font-size: 0.9rem;
+}
+.VIEW_SWITCHER button:hover { color: white; background: rgba(255,255,255,0.05); }
+.VIEW_SWITCHER button.ACTIVE { color: white; background: var(--primary-blue); }
+
+.NAV_RIGHT { display: flex; align-items: center; gap: 20px; }
+.USER_PROFILE { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.USER_TEXT { display: flex; flex-direction: column; text-align: right; }
+.USER_TEXT .NAME { font-size: 0.85rem; font-weight: 700; color: white; }
+.USER_TEXT .ROLE { font-size: 0.7rem; color: #94a3b8; font-weight: 700; }
+.AVATAR_CIRCLE { 
+  width: 38px; height: 38px; background: var(--primary-blue); 
+  border-radius: 50%; display: flex; align-items: center; 
+  justify-content: center; font-weight: 800; font-size: 1rem; color: white;
+}
+
+.LOGOUT_BTN { 
+  background: transparent; border: none; color: #94a3b8; 
+  cursor: pointer; font-size: 1.2rem; transition: 0.2s; 
+}
+.LOGOUT_BTN:hover { color: var(--danger-red); }
+
+/* --- 3. TIER 2: SECONDARY NAVIGATION --- */
+.DASH_SECONDARY_NAV {
+  min-height: var(--nav-secondary-h);
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  flex-shrink: 0;
+  z-index: 900;
+}
+
+.CM_FILTER_BAR { display: flex; gap: 10px; overflow-x: auto; width: 100%; align-items: center; padding-bottom: 4px; }
+.CM_FILTER_BAR::-webkit-scrollbar { display: none; }
+.CM_FILTER_TAB {
+  background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px 16px;
+  border-radius: 20px; font-weight: 700; font-size: 0.75rem; 
+  color: var(--text-gray); cursor: pointer; transition: 0.2s;
+  white-space: nowrap;
+}
+.CM_FILTER_TAB.ACTIVE { background: var(--primary-blue); border-color: var(--primary-blue); color: white; }
+
+.STATUS_TABS { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px; }
+.STATUS_TABS::-webkit-scrollbar { display: none; }
+.STATUS_BTN {
+  background: transparent; border: none; color: var(--text-gray);
+  font-weight: 700; font-size: 0.85rem; cursor: pointer;
+  display: flex; align-items: center; gap: 8px; padding: 6px 12px;
+  border-radius: 6px; transition: 0.2s; white-space: nowrap;
+}
+.STATUS_BTN.ACTIVE { color: var(--primary-blue); background: #eff6ff; }
+.COUNT_BADGE {
+  background: #e2e8f0; color: var(--text-dark);
+  font-size: 0.7rem; padding: 2px 6px; border-radius: 10px;
+}
+.STATUS_BTN.ACTIVE .COUNT_BADGE { background: var(--primary-blue); color: white; }
+
+.SUB_NAV_TOOLS { display: flex; gap: 15px; align-items: center; }
+.SUB_SEARCH { position: relative; width: 250px; }
+.SUB_SEARCH i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-gray); }
+.SUB_SEARCH input {
+  width: 100%; padding: 8px 12px 8px 35px; border: 1px solid #e2e8f0;
+  border-radius: 8px; background: var(--bg-slate); outline: none; box-sizing: border-box;
+}
+.BTN_ADD {
+  background: var(--primary-blue); color: white; border: none;
+  padding: 8px 16px; border-radius: 8px; font-weight: 700;
+  cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 8px;
+  white-space: nowrap; transition: 0.2s;
+}
+.BTN_ADD:hover { background: var(--primary-dark); }
+
+/* --- 4. VIEWPORT & CONTENT AREA --- */
+.DASH_VIEWPORT {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: var(--bg-slate);
+  padding: 0; /* CRITICAL FIX: Removed 2rem padding so the profile can stretch edge-to-edge */
+}
+
+.CONTENT_AREA {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex: 1;
+  padding: 2rem; /* Moved padding here so the dashboard items still look great */
+  box-sizing: border-box;
+}
+
+.TRACKING_LIST_WRAP {
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* --- 5. ANNOUNCEMENT GRID --- */
+.CM_ANNOUNCEMENT_GRID {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+  gap: 25px;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  padding-bottom: 3rem;
+}
+
+.CM_NEWS_ITEM {
+  background: white; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0; cursor: pointer; transition: 0.3s;
+  display: flex; flex-direction: column;
+}
+.CM_NEWS_ITEM:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+.CM_NEWS_PREVIEW_IMG { height: 180px; background: #f1f5f9; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.CM_NEWS_PREVIEW_IMG img { width: 100%; height: 100%; object-fit: cover; }
+.CM_NEWS_PLACEHOLDER i { font-size: 3rem; color: #cbd5e1; }
+.CM_NEWS_BODY { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.CM_NEWS_META { display: flex; justify-content: space-between; margin-bottom: 0.75rem; }
+.CM_NEWS_DATE { font-size: 0.75rem; font-weight: 700; color: var(--primary-blue); }
+.CM_NEWS_CAT { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; color: var(--text-gray); }
+.CM_NEWS_BODY h4 { font-size: 1.2rem; font-weight: 800; color: var(--text-dark); margin: 0 0 0.75rem 0; }
+.CM_SNIPPET { color: var(--text-gray); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.5rem; }
+.CM_NEWS_LINK { margin-top: auto; background: #f8fafc; border: 1px solid #e2e8f0; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 0.8rem; text-align: center; cursor: pointer; transition: 0.2s;}
+.CM_NEWS_LINK:hover { background: #e2e8f0; }
+
+/* --- 6. SIDE PANEL DETAILS --- */
+.CM_SIDE_PANEL_OVERLAY {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+  background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(4px);
+  display: flex; justify-content: flex-end; z-index: 9999;
+}
+.CM_SIDE_PANEL {
+  width: 400px; max-width: 100%; background: white; height: 100%;
+  box-shadow: -4px 0 15px rgba(0,0,0,0.1); display: flex; flex-direction: column;
+  animation: slideInRight 0.3s ease forwards;
+}
+@keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
+.PANEL_HEADER { padding: 1.5rem; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
+.PANEL_HEADER h3 { margin: 0; font-size: 1.25rem; color: var(--text-dark); }
+.CLOSE_PANEL { background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-gray); }
+.PANEL_BODY { padding: 1.5rem; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 1rem; }
+.INFO_ROW { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.5rem; border-bottom: 1px dashed #e2e8f0; }
+.INFO_ROW strong { color: var(--text-gray); font-size: 0.9rem; }
+.INFO_ROW span { font-weight: 600; color: var(--text-dark); font-size: 0.95rem; text-align: right; }
+.INFO_SECTION { margin-top: 1rem; }
+.INFO_SECTION strong { display: block; color: var(--text-gray); font-size: 0.9rem; margin-bottom: 0.5rem; }
+.INFO_SECTION p { margin: 0; font-size: 0.95rem; color: var(--text-dark); line-height: 1.5; background: #f8fafc; padding: 1rem; border-radius: 8px; }
+.STATUS_LABEL { padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; }
+.STATUS_LABEL.PENDING { background: #fef3c7; color: #d97706; }
+.STATUS_LABEL.PROCESSING { background: #dbeafe; color: #2563eb; }
+.STATUS_LABEL.READY, .STATUS_LABEL.COMPLETED, .STATUS_LABEL.SETTLED { background: #d1fae5; color: #059669; }
+
+/* --- 7. STATUS ELEMENTS --- */
+.EMPTY_DASH { grid-column: 1 / -1; text-align: center; padding: 6rem 2rem; color: var(--text-gray); }
+.EMPTY_DASH i { font-size: 3.5rem; opacity: 0.3; margin-bottom: 1rem; display: block; }
+.DASH_LOADER { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-gray); }
+.SPINNER { width: 40px; height: 40px; border: 4px solid #f3f4f6; border-top: 4px solid var(--primary-blue); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 1rem; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* =========================================================
+   8. MOBILE RESPONSIVENESS (APP-LIKE RE-ENGINEERING)
+   ========================================================= */
+
+@media (max-width: 768px) {
+  /* Toggle Utility Classes */
+  .DESKTOP_ONLY { display: none !important; }
+  .MOBILE_ONLY { display: flex !important; }
+
+  /* Adjust Page Root to accommodate Bottom Nav */
+  .DASH_PAGE_ROOT { padding-bottom: var(--mobile-nav-h); }
+
+  /* Header / Primary Nav */
+  .DASH_PRIMARY_NAV { 
+    padding: 0 1rem; 
+    height: 60px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  .BRAND_BOX span { font-size: 1rem; }
+  
+  /* Make logout icon bigger for touch targets */
+  .LOGOUT_BTN { font-size: 1.4rem; padding: 10px; color: white; }
+  
+  /* Secondary Nav (Filters & Search) */
+  .DASH_SECONDARY_NAV { 
+    flex-direction: column; 
+    height: auto; 
+    padding: 1rem; 
+    gap: 12px; 
+    align-items: stretch; 
+  }
+  
+  .SUB_NAV_TOOLS { 
+    flex-direction: row; 
+    width: 100%; 
+    gap: 10px; 
+  }
+
+  .SUB_SEARCH { flex: 1; width: auto; }
+  
+  .BTN_ADD .BTN_TEXT { display: none; }
+  .BTN_ADD { padding: 10px 16px; justify-content: center; font-size: 1rem; }
+
+  /* Content Padding Fix */
+  .CONTENT_AREA { padding: 1rem; padding-bottom: 2rem; }
+  .CM_ANNOUNCEMENT_GRID { grid-template-columns: 1fr; gap: 16px; margin-top: 0; }
+  
+  /* --- BOTTOM APP NAVIGATION BAR --- */
+  .MOBILE_BOTTOM_NAV {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--mobile-nav-h);
+    background: white;
+    border-top: 1px solid #e2e8f0;
+    box-shadow: 0 -4px 6px -1px rgba(0,0,0,0.05);
+    z-index: 2000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: env(safe-area-inset-bottom); /* iPhone safe area */
+  }
+
+  .MOBILE_BOTTOM_NAV button {
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    height: 100%;
+    color: var(--text-gray);
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+
+  .MOBILE_BOTTOM_NAV button i { font-size: 1.2rem; }
+  .MOBILE_BOTTOM_NAV button span { font-size: 0.65rem; font-weight: 700; }
+  
+  .MOBILE_BOTTOM_NAV button.ACTIVE { color: var(--primary-blue); }
+  .MOBILE_BOTTOM_NAV button.ACTIVE i { transform: scale(1.1); }
+}

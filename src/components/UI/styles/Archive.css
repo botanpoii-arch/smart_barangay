@@ -1,0 +1,329 @@
+/* =========================================
+   ARCHIVE MODULE STYLES (Responsive Vault)
+   Scoped Prefix: ARC_
+   ========================================= */
+
+.ARC_PAGE_WRAP {
+  padding: 1.5rem;
+  background-color: #f8fafc;
+  min-height: calc(100vh - 70px);
+  font-family: 'Inter', sans-serif;
+}
+
+.ARC_MAIN_CONTAINER {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- STATS PANEL --- */
+.ARC_STATS_PANEL {
+  display: flex;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+  gap: 2rem;
+  align-items: center;
+}
+
+.ARC_STAT_COL {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ARC_STAT_WIDE {
+  flex: 1;
+  border-left: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  padding: 0 2rem;
+}
+
+.ARC_TOTAL_COL {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 120px;
+}
+
+.ARC_STAT_TITLE {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.ARC_STAT_SUB {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.4;
+}
+
+.ARC_STAT_HIGHLIGHT {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #0f172a;
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: max-content;
+}
+
+.ARC_BIG_NUMBER {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+/* --- SEARCH BAR --- */
+.ARC_SEARCH_ROW {
+  display: flex;
+  width: 100%;
+}
+
+.ARC_SEARCH_INPUT {
+  width: 100%;
+  padding: 14px 16px 14px 42px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #1e293b;
+  background: #ffffff;
+  transition: all 0.2s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.ARC_SEARCH_INPUT:focus {
+  outline: none;
+  border-color: #64748b;
+  box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.1);
+}
+
+/* --- TABS --- */
+.ARC_TABS_CONTAINER {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0px;
+  overflow-x: auto; /* Allows horizontal scrolling of tabs if needed */
+  scrollbar-width: none; /* Hides scrollbar for clean look */
+}
+
+.ARC_TABS_CONTAINER::-webkit-scrollbar {
+  display: none;
+}
+
+.ARC_TAB_BTN {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap; /* Prevents text from breaking into two lines */
+}
+
+.ARC_TAB_BTN:hover {
+  color: #0f172a;
+}
+
+.ARC_TAB_BTN.ACTIVE {
+  color: #0f172a;
+  border-bottom-color: #0f172a;
+}
+
+/* --- TABLE --- */
+.ARC_TABLE_CARD {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.ARC_TABLE_WRAP {
+  width: 100%;
+  overflow-x: auto; /* Enables horizontal scroll on mobile */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.ARC_TABLE_MAIN {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 700px; /* Forces table to maintain width so it triggers scroll instead of squishing */
+}
+
+.ARC_TABLE_MAIN th {
+  background: #f8fafc;
+  padding: 1rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.ARC_TABLE_MAIN td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.9rem;
+  color: #1e293b;
+}
+
+.ARC_TABLE_MAIN tr:last-child td {
+  border-bottom: none;
+}
+
+.ARC_TABLE_MAIN tr:hover td {
+  background: #f8fafc;
+}
+
+/* --- CELL SPECIFICS --- */
+.ARC_ID_CELL {
+  font-weight: 600;
+  color: #475569 !important;
+  font-family: monospace;
+  font-size: 0.95rem !important;
+  white-space: nowrap;
+}
+
+.ARC_NAME_CELL {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ARC_TYPE_CELL {
+  color: #64748b !important;
+}
+
+.ARC_DATE_CELL {
+  white-space: nowrap;
+}
+
+/* --- BADGES --- */
+.ARC_BADGE {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.ARC_BADGE.SUCCESS { background: #dcfce7; color: #166534; }
+.ARC_BADGE.DANGER { background: #fee2e2; color: #991b1b; }
+.ARC_BADGE.INFO { background: #e0f2fe; color: #075985; }
+.ARC_BADGE.NEUTRAL { background: #f1f5f9; color: #475569; }
+
+/* --- STATES --- */
+.ARC_EMPTY_STATE {
+  text-align: center;
+  padding: 4rem !important;
+  color: #94a3b8 !important;
+  font-size: 1rem !important;
+}
+
+.ARC_EMPTY_STATE i {
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #cbd5e1;
+}
+
+.ARC_LOADING_STATE {
+  text-align: center;
+  padding: 5rem;
+  color: #64748b;
+}
+
+.ARC_LOADING_STATE i {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #0f172a;
+}
+
+/* =========================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================= */
+
+/* TABLET LAYOUT */
+@media (max-width: 992px) {
+  .ARC_STATS_PANEL {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    padding: 1.25rem;
+  }
+
+  .ARC_STAT_WIDE {
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 1.5rem 0;
+  }
+
+  .ARC_TOTAL_COL {
+    align-items: flex-start;
+  }
+}
+
+/* MOBILE LAYOUT */
+@media (max-width: 600px) {
+  .ARC_PAGE_WRAP {
+    padding: 1rem;
+  }
+
+  .ARC_MAIN_CONTAINER {
+    gap: 1rem;
+  }
+
+  .ARC_BIG_NUMBER {
+    font-size: 2rem;
+  }
+
+  .ARC_SEARCH_INPUT {
+    padding: 12px 14px 12px 38px;
+    font-size: 0.9rem;
+  }
+
+  .ARC_TABS_CONTAINER {
+    gap: 0.5rem;
+  }
+
+  .ARC_TAB_BTN {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+
+  /* Adjust table padding for smaller screens while keeping horizontal scroll */
+  .ARC_TABLE_MAIN th,
+  .ARC_TABLE_MAIN td {
+    padding: 0.85rem 1rem;
+    font-size: 0.85rem;
+  }
+}

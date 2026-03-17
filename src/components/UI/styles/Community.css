@@ -1,0 +1,269 @@
+/* --- PROFESSIONAL PORTAL: ULTRA-RESPONSIVE EDITION --- */
+:root {
+  --P-bg: #f8fafc;
+  --P-white: #ffffff;
+  --P-cobalt: #3b5998;
+  --P-cobalt-light: #eff6ff;
+  --P-emerald: #10b981;
+  --P-text-dark: #0f172a;
+  --P-text-muted: #64748b;
+  --P-border: #e2e8f0;
+  
+  /* Responsive Spacing Variables */
+  --nav-height: 3.5rem;
+}
+
+/* --- 1. CORE CANVAS --- */
+.CM_PAGE_WRAPPER {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--P-bg);
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  scroll-behavior: smooth;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.CM_PAGE_STAGE {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- 2. SLIM & STICKY NAVBAR --- */
+.CM_NAV_MAIN {
+  background: var(--P-white);
+  padding: 0.5rem 5%;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  border-bottom: 1px solid var(--P-border);
+  backdrop-filter: blur(10px); /* Modern touch */
+}
+
+.CM_NAV_LEFT { display: flex; align-items: center; gap: 10px; }
+.CM_LOGO_SHIELD { font-size: 1.2rem; color: var(--P-cobalt); }
+.CM_BRAND_INFO strong { display: block; color: var(--P-text-dark); font-size: 0.85rem; line-height: 1; }
+.CM_BRAND_INFO span { font-size: 0.65rem; color: var(--P-text-muted); font-weight: 600; }
+
+.CM_NAV_RIGHT { display: flex; align-items: center; gap: 0.75rem; }
+
+/* Desktop-only text hiding for mobile responsiveness */
+@media (max-width: 480px) {
+  .CM_EXIT_LINK span { display: none; } /* Show only icon on tiny screens */
+  .CM_BRAND_INFO { display: none; }
+}
+
+.CM_EXIT_LINK { 
+  background: var(--P-cobalt-light); 
+  border: 1px solid #dbeafe;
+  cursor: pointer; 
+  color: var(--P-cobalt);
+  font-weight: 700; 
+  font-size: 0.7rem; 
+  display: flex; 
+  align-items: center; 
+  gap: 6px;
+  padding: 0.4rem 0.8rem; 
+  border-radius: 6px; 
+  transition: all 0.2s;
+}
+
+.CM_ONLINE_BADGE {
+  background: var(--P-emerald); 
+  color: white; 
+  padding: 0.25rem 0.6rem;
+  border-radius: 50px; 
+  font-weight: 700; 
+  font-size: 0.6rem;
+  display: flex; 
+  align-items: center; 
+  gap: 4px;
+}
+
+.CM_DOT { width: 5px; height: 5px; background: white; border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+/* --- 3. FLUID HERO SECTION --- */
+.CM_HERO_HERO {
+  padding: 3rem 1rem; 
+  text-align: center;
+  background: linear-gradient(180deg, #f0f7ff 0%, var(--P-bg) 100%);
+}
+
+.CM_HERO_HERO h1 { 
+  font-size: clamp(1.5rem, 5vw, 2.2rem); /* Responsive fluid typography */
+  font-weight: 800; 
+  color: var(--P-text-dark); 
+  letter-spacing: -0.03em;
+  margin-bottom: 0.5rem;
+}
+
+.CM_HERO_HERO p { 
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: var(--P-text-muted); 
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --- 4. SIGN IN SECTION --- */
+.CM_SIGNIN_SECTION {
+  background: var(--P-white);
+  border-top: 1px solid var(--P-border);
+  border-bottom: 1px solid var(--P-border);
+  padding: clamp(2rem, 8vh, 4rem) 1.5rem;
+  text-align: center;
+}
+
+.CM_SIGNIN_CONTENT h2 { 
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-weight: 900; 
+  margin-bottom: 0.5rem;
+}
+
+.CM_SIGNIN_CONTENT p { color: var(--P-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+.CM_LOGIN_TRIGGER_BTN {
+  background-color: var(--P-cobalt);
+  color: white;
+  border: none;
+  padding: 0.9rem 3rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  width: 100%; /* Full width on mobile */
+  max-width: 280px;
+}
+
+.CM_LOGIN_TRIGGER_BTN:hover { background-color: #2d4373; transform: translateY(-2px); }
+
+/* --- 5. ANNOUNCEMENTS SECTION --- */
+.CM_ANNOUNCEMENT_SECTION { 
+  padding: 3rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.CM_ANNOUNCEMENT_HEADER { text-align: left; margin-bottom: 1.5rem; }
+.CM_ANNOUNCEMENT_HEADER h2 { font-size: 1.5rem; font-weight: 800; color: var(--P-text-dark); }
+.CM_ANNOUNCEMENT_HEADER p { font-size: 0.9rem; color: var(--P-text-muted); }
+
+.CM_FILTER_BAR { 
+  display: flex; 
+  gap: 0.6rem; 
+  overflow-x: auto; /* Horizontal scroll on mobile */
+  padding-bottom: 1rem; 
+  margin-bottom: 2rem;
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+.CM_FILTER_BAR::-webkit-scrollbar { display: none; } /* Hide scrollbar Chrome/Safari */
+
+.CM_FILTER_TAB {
+  white-space: nowrap;
+  background: var(--P-white); 
+  border: 1px solid var(--P-border); 
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px; 
+  font-weight: 700; 
+  font-size: 0.75rem; 
+  color: var(--P-text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.CM_FILTER_TAB.ACTIVE { 
+  background: var(--P-cobalt); 
+  border-color: var(--P-cobalt); 
+  color: white; 
+}
+
+/* --- 6. ADAPTIVE GRID --- */
+.CM_ANNOUNCEMENT_GRID { 
+  display: grid; 
+  /* Responsive grid: 1 col on mobile, 2 on tablet, 3 on desktop */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+  gap: 1.5rem; 
+}
+
+.CM_NEWS_ITEM {
+  background: var(--P-white); 
+  border: 1px solid var(--P-border); 
+  border-radius: 16px;
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.CM_NEWS_ITEM:hover { 
+  transform: translateY(-8px); 
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}
+
+.CM_NEWS_PREVIEW_IMG { 
+  height: 180px; 
+  background-color: #f1f5f9;
+  position: relative;
+  overflow: hidden;
+}
+
+.CM_NEWS_PREVIEW_IMG img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.CM_NEWS_BODY { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+.CM_NEWS_META { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+.CM_NEWS_DATE { font-size: 0.7rem; font-weight: 800; color: var(--P-cobalt); }
+.CM_NEWS_CAT { 
+  font-size: 0.6rem; 
+  text-transform: uppercase; 
+  font-weight: 800; 
+  background: var(--P-bg);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.CM_NEWS_BODY h4 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.5rem; line-height: 1.3; color: var(--P-text-dark); }
+.CM_NEWS_BODY p { font-size: 0.85rem; color: var(--P-text-muted); line-height: 1.5; margin-bottom: 1.5rem; }
+
+.CM_NEWS_LINK { 
+  margin-top: auto;
+  background: var(--P-bg); 
+  border: 1px solid var(--P-border);
+  color: var(--P-text-dark); 
+  font-weight: 700; 
+  padding: 0.6rem; 
+  border-radius: 8px; 
+  font-size: 0.8rem;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.CM_NEWS_LINK:hover { background: var(--P-cobalt-light); border-color: var(--P-cobalt); color: var(--P-cobalt); }
+
+/* --- 7. TABLET & SMALL SCREEN OVERRIDES --- */
+@media (max-width: 768px) {
+  .CM_NAV_MAIN { padding: 0.5rem 3%; }
+  .CM_ANNOUNCEMENT_SECTION { padding: 2rem 3%; }
+  .CM_ANNOUNCEMENT_GRID { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+}
+
+/* Specific for Mobile Phones in Portrait */
+@media (max-width: 480px) {
+  .CM_ANNOUNCEMENT_GRID { grid-template-columns: 1fr; }
+  .CM_HERO_HERO { padding: 2rem 1.5rem; }
+  .CM_LOGIN_TRIGGER_BTN { max-width: 100%; }
+  .CM_NEWS_PREVIEW_IMG { height: 150px; }
+}
+
+/* Handling high vertical content while maintaining responsiveness */
+.CM_PAGE_STAGE { min-height: 100vh; }

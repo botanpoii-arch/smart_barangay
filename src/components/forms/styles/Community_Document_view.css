@@ -1,0 +1,222 @@
+/* --- SECTION LABEL --- */
+.DOC_SECTION_LABEL {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94a3b8; /* Slate 400 */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 1.5rem 0 0.75rem 0;
+  padding-left: 12px;
+  border-left: 3px solid #2563eb; /* Document Blue */
+  display: flex;
+  align-items: center;
+}
+
+/* --- CARD CONTAINER --- */
+.DOC_CARD_ITEM {
+  background: #ffffff;
+  border-radius: 10px; /* Consistent professional radius */
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(148, 163, 184, 0.1); /* Soft shadow */
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+/* Hover Effect: Lift & Enhanced Shadow */
+.DOC_CARD_ITEM:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(148, 163, 184, 0.15), 
+              0 4px 6px -2px rgba(148, 163, 184, 0.1);
+  border-color: #cbd5e1;
+}
+
+/* Left Accent Bar (Blue - Slides in on hover) */
+.DOC_CARD_ITEM::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #2563eb;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.2s ease;
+}
+
+.DOC_CARD_ITEM:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --- HEADER --- */
+.DOC_HEADER {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.DOC_ID_GROUP {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.DOC_ID_GROUP strong {
+  font-size: 0.95rem;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.DOC_REF {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-family: 'JetBrains Mono', 'Menlo', monospace;
+  letter-spacing: -0.02em;
+}
+
+/* --- STATUS BADGES --- */
+.DOC_STATUS {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px; /* Pill shape */
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+}
+
+.DOC_STATUS.PENDING { 
+  background: #fff7ed; 
+  color: #c2410c; 
+}
+
+.DOC_STATUS.PICKUP { 
+  background: #eff6ff; 
+  color: #1d4ed8; 
+}
+
+.DOC_STATUS.COMPLETED { 
+  background: #f0fdf4; 
+  color: #15803d; 
+}
+
+/* --- BODY CONTENT --- */
+.DOC_BODY {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 1rem;
+}
+
+.DOC_ICON_BOX {
+  width: 42px;
+  height: 42px;
+  background: #eff6ff; /* Very light blue */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2563eb; /* Primary Blue */
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.DOC_INFO {
+  flex: 1;
+  min-width: 0;
+}
+
+.DOC_INFO h4 {
+  font-size: 0.95rem;
+  margin: 0 0 4px 0;
+  color: #334155;
+  font-weight: 600;
+}
+
+.DOC_DESC {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.DOC_DATE {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.DOC_DATE::before {
+  content: '\f017'; /* FontAwesome clock */
+  font-family: 'Font Awesome 5 Free'; 
+  font-weight: 400;
+}
+
+.DOC_PRICE_TAG {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 0.95rem;
+}
+
+/* --- FOOTER --- */
+.DOC_FOOTER {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
+.DOC_TOTAL {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.DOC_TOTAL b {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.DOC_BTN_VIEW {
+  background: transparent;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748b;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.DOC_BTN_VIEW::after {
+  content: '→';
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.2s;
+}
+
+.DOC_BTN_VIEW:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.DOC_BTN_VIEW:hover::after {
+  transform: translateX(3px);
+}

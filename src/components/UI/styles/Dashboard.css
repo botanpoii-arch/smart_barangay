@@ -1,0 +1,292 @@
+/* =========================================
+   1. DEFAULT THEME (LIGHT MODE)
+   ========================================= */
+:root {
+  /* --- TEXT COLORS --- */
+  --DS-text-primary: #1e293b;   /* Slate 800 */
+  --DS-text-secondary: #64748b; /* Slate 500 */
+  --DS-text-inverse: #ffffff;   /* White text */
+  
+  /* --- BACKGROUNDS --- */
+  --DS-bg-canvas: #ffffff;      /* White Cards */
+  --DS-bg-body: #f8fafc;        /* Light Gray Background */
+  --DS-surface-hover: #f1f5f9;
+  
+  /* --- BORDERS & BRAND --- */
+  --DS-color-brand: #3b82f6;
+  --DS-border-subtle: #e2e8f0;
+  --DS-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --DS-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  
+  /* --- MAP & ICONS --- */
+  --DS-map-bg: #eef2f6;
+  --DS-map-dots: #cbd5e1;
+  --DS-empty-icon: #cbd5e1;
+
+  /* Icon Backgrounds (Bright) */
+  --DS-bg-blue: #eff6ff; 
+  --DS-bg-pink: #fdf2f8; 
+  --DS-bg-yellow: #fefce8; 
+  --DS-bg-red: #fef2f2;
+  
+  /* Icon Text Colors */
+  --DS-text-pink: #ec4899; 
+  --DS-text-yellow: #eab308; 
+  --DS-text-red: #ef4444;
+}
+
+/* =========================================
+   2. DARK MODE OVERRIDES
+   ========================================= */
+[data-theme='dark'] {
+    /* --- TEXT COLORS --- */
+    --DS-text-primary: #f8fafc;   /* White */
+    --DS-text-secondary: #94a3b8; /* Light Gray */
+    
+    /* --- BACKGROUNDS --- */
+    --DS-bg-canvas: #1e293b;      /* Dark Slate Card */
+    --DS-bg-body: #0f172a;        /* Dark Page Background */
+    --DS-surface-hover: #334155;
+    
+    /* --- BORDERS --- */
+    --DS-border-subtle: #334155;
+    --DS-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+    --DS-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+
+    /* --- MAP & ICONS --- */
+    --DS-map-bg: #0f172a;
+    --DS-map-dots: #334155;
+    --DS-empty-icon: #475569;
+
+    /* Dulling colors for dark mode */
+    --DS-bg-blue: rgba(59, 130, 246, 0.15);
+    --DS-bg-pink: rgba(236, 72, 153, 0.15);
+    --DS-bg-yellow: rgba(234, 179, 8, 0.15);
+    --DS-bg-red: rgba(239, 68, 68, 0.15);
+}
+
+/* =========================================
+   3. GLOBAL LAYOUT (RESPONSIVE)
+   ========================================= */
+.DS_LAYOUT_WRAPPER {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--DS-bg-body);
+  color: var(--DS-text-primary); 
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.DS_MAIN_CONTENT {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.DS_CONTAINER {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem; /* Reduced for mobile */
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .DS_CONTAINER {
+    padding: 2rem;
+  }
+}
+
+/* --- TYPOGRAPHY --- */
+.DS_HEADER { margin-bottom: 0.5rem; }
+
+.DS_TITLE {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: var(--DS-text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.DS_SUBTITLE {
+  color: var(--DS-text-secondary);
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+/* --- CARDS --- */
+.DS_STATS_GRID {
+  display: grid;
+  /* Use min() to prevent overflow on very small mobile screens */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1.5rem;
+}
+
+.DS_CARD {
+  background-color: var(--DS-bg-canvas); 
+  color: var(--DS-text-primary); 
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: var(--DS-shadow-sm);
+  border: 1px solid var(--DS-border-subtle);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-height: 160px;
+}
+
+.DS_CARD:hover {
+  transform: translateY(-4px);
+  border-color: var(--DS-color-brand);
+  box-shadow: var(--DS-shadow-md);
+}
+
+.DS_CARD_HEADER {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.DS_CARD_LABEL {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--DS-text-secondary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.DS_CARD_VALUE {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--DS-text-primary);
+  margin: 0;
+  line-height: 1;
+}
+
+.DS_CARD_LINK {
+  font-size: 0.85rem;
+  color: var(--DS-color-brand);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-top: auto;
+}
+.DS_CARD_LINK:hover { opacity: 0.8; text-decoration: underline; }
+
+/* --- ICON VARIANTS --- */
+.DS_ICON_BOX { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+.DS_VAR_BLUE { background-color: var(--DS-bg-blue); color: var(--DS-color-brand); }
+.DS_VAR_PINK { background-color: var(--DS-bg-pink); color: var(--DS-text-pink); }
+.DS_VAR_YELLOW { background-color: var(--DS-bg-yellow); color: var(--DS-text-yellow); }
+.DS_VAR_RED { background-color: var(--DS-bg-red); color: var(--DS-text-red); }
+
+/* --- BOTTOM GRID --- */
+.DS_BOTTOM_GRID {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  min-height: 400px;
+}
+
+/* Existing responsive breakpoint for the bottom grid */
+@media (max-width: 1024px) { 
+  .DS_BOTTOM_GRID { 
+    grid-template-columns: 1fr; 
+    min-height: auto;
+  } 
+}
+
+.DS_SECTION_BOX {
+  background-color: var(--DS-bg-canvas);
+  color: var(--DS-text-primary);
+  border-radius: 16px;
+  border: 1px solid var(--DS-border-subtle);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--DS-shadow-sm);
+  transition: background-color 0.3s ease;
+}
+
+.DS_SECTION_HEADER {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--DS-border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--DS-bg-canvas);
+}
+
+.DS_SECTION_HEADER h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--DS-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.DS_SECTION_HEADER h3 i { color: var(--DS-color-brand); }
+
+.DS_PLACEHOLDER_CONTENT {
+  flex-grow: 1;
+  background-color: var(--DS-surface-hover);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--DS-text-secondary);
+  min-height: 350px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.DS_EMPTY_ICON { font-size: 3rem; color: var(--DS-empty-icon); margin-bottom: 1rem; }
+
+/* --- MAP VIEW --- */
+.DS_MAP_VIEW {
+  width: 100%;
+  height: 400px; /* Fixed height for consistency */
+  background-color: var(--DS-map-bg);
+  border-radius: 0 0 16px 16px;
+  overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+  .DS_MAP_VIEW {
+    height: 100%; /* Stretch to fill section box on desktop */
+  }
+}
+
+.DS_MAP_CHIP {
+  background-color: var(--DS-bg-canvas);
+  padding: 1rem 1.5rem; /* Slightly smaller for mobile */
+  border-radius: 50px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--DS-border-subtle);
+  width: fit-content;
+  max-width: 90%;
+}
+
+.DS_MAP_PIN { color: #ef4444; font-size: 1.2rem; }
+.DS_MAP_TEXT b { display: block; color: var(--DS-text-primary); }
+.DS_MAP_TEXT span { font-size: 0.8rem; color: var(--DS-text-secondary); }

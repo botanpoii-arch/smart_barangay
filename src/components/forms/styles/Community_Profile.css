@@ -1,0 +1,301 @@
+/* Community_Profile.css */
+
+.CM_PROFILE_ROOT {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-slate, #f1f5f9);
+  animation: slideInUp 0.3s ease;
+  position: relative;
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- HEADER / APP BAR --- */
+.CM_PROFILE_HEADER {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Keeps back button left, spacer right */
+  padding: 1rem 1.5rem;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  min-height: 60px;
+  box-sizing: border-box;
+}
+
+.CM_BACK_BTN {
+  background: none;
+  border: none;
+  color: var(--text-gray, #64748b);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  transition: color 0.2s;
+  z-index: 2; /* Keep above absolute title */
+}
+
+.CM_BACK_BTN:hover {
+  color: var(--primary-blue, #2563eb);
+}
+
+.CM_BACK_BTN i {
+  font-size: 1.2rem;
+}
+
+/* Absolute positioning guarantees perfect centering regardless of button size */
+.CM_PROFILE_TITLE {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-dark, #0f172a);
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.CM_HEADER_SPACER {
+  width: 24px; /* Just a small spacer to maintain flex layout */
+}
+
+/* --- SCROLL AREA --- */
+.CM_PROFILE_SCROLL_AREA {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.CM_PROFILE_CONTENT {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- REUSABLE CARDS --- */
+.CM_PROFILE_CARD {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+/* --- HERO CARD --- */
+.CM_HERO_CARD {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.CM_AVATAR_LARGE {
+  width: 80px;
+  height: 80px;
+  background-color: var(--primary-blue, #2563eb);
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 800;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+.CM_HERO_TEXT h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-dark, #0f172a);
+}
+
+.CM_VERIFIED_BADGE {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--success-green, #10b981);
+  background: #d1fae5;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* --- SECTIONS --- */
+.CM_SECTION_TITLE {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--text-gray, #64748b);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 0.75rem 0.5rem;
+}
+
+.CM_DATA_LIST {
+  display: flex;
+  flex-direction: column;
+}
+
+.CM_DATA_ROW {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid #f1f5f9;
+  gap: 1rem;
+}
+.CM_DATA_ROW:last-child {
+  border-bottom: none;
+}
+
+.CM_DATA_LABEL {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-gray, #64748b);
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.CM_DATA_LABEL i {
+  width: 18px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 1rem;
+}
+
+.CM_DATA_VALUE {
+  font-weight: 700;
+  color: var(--text-dark, #0f172a);
+  font-size: 0.95rem;
+  text-align: right;
+  word-break: break-word;
+}
+
+.CM_ROLE_BADGE {
+  background: #eff6ff;
+  color: var(--primary-blue, #2563eb);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+/* --- ACTION BUTTONS --- */
+.CM_ACTION_CONTAINER {
+  padding: 1rem 1.25rem;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+}
+
+.CM_ACTION_BTN {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.CM_PWD_BTN {
+  background-color: white;
+  color: var(--text-dark, #0f172a);
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.CM_PWD_BTN:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+/* --- FOOTER --- */
+.CM_PROFILE_FOOTER {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 1rem;
+  color: var(--text-gray, #64748b);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.CM_PROFILE_FOOTER i {
+  margin-top: 2px;
+  color: #cbd5e1;
+  font-size: 1.2rem;
+}
+
+.CM_PROFILE_FOOTER p {
+  margin: 0;
+}
+
+/* =========================================================
+   MOBILE RESPONSIVENESS (NATIVE APP FEEL)
+   ========================================================= */
+@media (max-width: 768px) {
+  
+  /* CRITICAL: Add padding to the bottom so the mobile nav bar doesn't cover the footer */
+  .CM_PROFILE_SCROLL_AREA {
+    padding: 1rem;
+    padding-bottom: calc(var(--mobile-nav-h, 65px) + 2rem); 
+  }
+
+  .CM_PROFILE_HEADER {
+    padding: 12px 1rem;
+  }
+  
+  /* Make the rows compact but keep them side-by-side like iOS settings */
+  .CM_DATA_ROW {
+    padding: 1rem;
+  }
+
+  .CM_DATA_LABEL {
+    font-size: 0.85rem;
+  }
+
+  .CM_DATA_VALUE {
+    font-size: 0.9rem;
+    color: var(--text-gray, #64748b); /* Matches native app style where values are slightly muted */
+    font-weight: 600;
+  }
+  
+  /* Let long values wrap cleanly instead of squishing the label */
+  .CM_DATA_VALUE {
+    text-align: right;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .CM_HERO_TEXT h3 {
+    font-size: 1.3rem;
+  }
+}

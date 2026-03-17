@@ -1,0 +1,217 @@
+/* --- SECTION LABEL --- */
+.BLOTTER_SECTION_LABEL {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94a3b8; /* Slate 400 */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 1.5rem 0 0.75rem 0;
+  padding-left: 12px;
+  border-left: 3px solid #f59e0b; /* Warning Orange */
+  display: flex;
+  align-items: center;
+}
+
+/* --- CARD CONTAINER --- */
+.BLOTTER_CARD_ITEM {
+  background: #ffffff;
+  border-radius: 10px; /* Slightly tighter radius for pro look */
+  padding: 1.25rem; /* Increased padding for breathing room */
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(148, 163, 184, 0.1); /* Softer, blue-tinted shadow */
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+/* Hover Effect: Lift & Shadow only, no jarring border color changes */
+.BLOTTER_CARD_ITEM:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(148, 163, 184, 0.15), 
+              0 4px 6px -2px rgba(148, 163, 184, 0.1);
+  border-color: #cbd5e1;
+}
+
+/* Left Accent Bar (Hidden by default, slides in on hover) */
+.BLOTTER_CARD_ITEM::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #f59e0b;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 0.2s ease;
+}
+
+.BLOTTER_CARD_ITEM:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* --- HEADER --- */
+.BLOTTER_HEADER {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #f8fafc; /* Very subtle separator */
+}
+
+.BLOTTER_ID_GROUP {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.BLOTTER_ID_GROUP strong {
+  font-size: 0.95rem;
+  color: #0f172a; /* Slate 900 - Darker/Sharper */
+  font-weight: 600;
+}
+
+.BLOTTER_REF {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-family: 'JetBrains Mono', 'Menlo', monospace; /* Monospace for IDs is standard pro practice */
+  letter-spacing: -0.02em;
+}
+
+/* --- STATUS BADGES (Refined) --- */
+.BLOTTER_STATUS {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px; /* Pill shape */
+  text-transform: capitalize; /* "Pending" looks better than "PENDING" */
+  letter-spacing: 0.02em;
+}
+
+/* Removed borders for a cleaner "Soft UI" look */
+.BLOTTER_STATUS.PENDING { 
+  background: #fff7ed; 
+  color: #c2410c; 
+}
+
+.BLOTTER_STATUS.PICKUP { 
+  background: #eff6ff; 
+  color: #1d4ed8; 
+}
+
+.BLOTTER_STATUS.COMPLETED { 
+  background: #f0fdf4; 
+  color: #15803d; 
+}
+
+/* --- BODY CONTENT --- */
+.BLOTTER_BODY {
+  display: flex;
+  align-items: flex-start; /* Align top for long descriptions */
+  gap: 16px;
+  margin-bottom: 1rem;
+}
+
+.BLOTTER_ICON_BOX {
+  width: 42px;
+  height: 42px;
+  background: #fffbeb; /* Very light yellow/orange */
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d97706; /* Darker orange for contrast */
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.BLOTTER_INFO {
+  flex: 1;
+  min-width: 0; /* Prevents text overflow issues */
+}
+
+.BLOTTER_INFO h4 {
+  font-size: 0.95rem;
+  margin: 0 0 4px 0;
+  color: #334155;
+  font-weight: 600;
+}
+
+.BLOTTER_DESC {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Show 2 lines max */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.BLOTTER_DATE {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+/* Adding a small icon via CSS for date */
+.BLOTTER_DATE::before {
+  content: '\f017'; /* FontAwesome clock unicode */
+  font-family: 'Font Awesome 5 Free'; 
+  font-weight: 400;
+}
+
+/* --- FOOTER --- */
+.BLOTTER_FOOTER {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
+.BLOTTER_TOTAL {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.BLOTTER_TOTAL b {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.BLOTTER_BTN_VIEW {
+  background: transparent;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748b;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.BLOTTER_BTN_VIEW::after {
+  content: '→';
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform 0.2s;
+}
+
+.BLOTTER_BTN_VIEW:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.BLOTTER_BTN_VIEW:hover::after {
+  transform: translateX(3px); /* Subtle arrow movement */
+}

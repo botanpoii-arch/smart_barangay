@@ -1,0 +1,123 @@
+/* Community_Guide.css */
+
+.guide-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99990; /* Keep high but below spotlight */
+}
+
+.guide-spotlight {
+  position: fixed; /* Fixed prevents scroll clipping */
+  border-radius: 8px;
+  /* Darkens everything outside the spotlight */
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.75);
+  pointer-events: none;
+  /* Smooth gliding transition when moving between steps */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid #1a56db;
+  animation: pulse-ring 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  z-index: 99998;
+}
+
+/* Refined Animation for smoother visual feedback */
+@keyframes pulse-ring {
+  0% { 
+    box-shadow: 0 0 0 9999px rgba(0,0,0,0.75), 0 0 0 0 rgba(26, 86, 219, 0.7); 
+  }
+  50% { 
+    box-shadow: 0 0 0 9999px rgba(0,0,0,0.75), 0 0 0 15px rgba(26, 86, 219, 0); 
+  }
+  100% { 
+    box-shadow: 0 0 0 9999px rgba(0,0,0,0.75), 0 0 0 0 rgba(26, 86, 219, 0); 
+  }
+}
+
+.guide-tooltip {
+  position: fixed; /* Ensures it stays on screen during scroll */
+  background-color: #ffffff;
+  color: #333333;
+  padding: 1.2rem;
+  border-radius: 12px; /* Modern rounded corners */
+  width: 280px;
+  /* Prevents horizontal overflow on very small devices */
+  max-width: calc(100vw - 32px); 
+  box-sizing: border-box;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  pointer-events: auto;
+  z-index: 99999;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.guide-title {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  color: #1a56db;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.guide-content {
+  margin: 0 0 16px 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #4b5563;
+}
+
+.guide-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 12px;
+}
+
+.guide-step-count {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  font-weight: 600;
+}
+
+.guide-skip-btn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.guide-skip-btn:hover {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media screen and (max-width: 480px) {
+  .guide-tooltip {
+    width: 90vw;
+    padding: 1rem;
+    left: 5vw !important; /* Force center on mobile to avoid clipping */
+    /* Let the top/bottom positioning from TSX remain, just fix the horizontal */
+  }
+
+  .guide-title {
+    font-size: 1rem;
+  }
+
+  .guide-content {
+    font-size: 0.85rem;
+  }
+
+  .guide-footer {
+    padding-top: 8px;
+  }
+}

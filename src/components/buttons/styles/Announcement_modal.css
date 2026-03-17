@@ -1,0 +1,279 @@
+/* =========================================
+   ANNOUNCEMENT MODAL (Professional & Responsive)
+   Scoped Prefix: AM_
+   ========================================= */
+
+:root {
+  --am-primary: #2563eb;
+  --am-primary-hover: #1d4ed8;
+  --am-slate-900: #0f172a;
+  --am-slate-700: #334155;
+  --am-slate-600: #475569;
+  --am-slate-400: #94a3b8;
+  --am-slate-200: #e2e8f0;
+  --am-slate-50: #f8fafc;
+  --am-error: #ef4444;
+}
+
+/* --- 1. OVERLAY --- */
+.AM_OVERLAY {
+  position: fixed;
+  inset: 0; /* Shorthand for top, bottom, left, right: 0 */
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 1rem; /* Padding for mobile edges */
+  animation: am_fadeIn 0.2s ease-out;
+}
+
+/* --- 2. MODAL CARD --- */
+.AM_CONTENT {
+  background: #ffffff;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh; /* Prevents modal from leaving screen */
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column; /* Split into Header, Body, Footer */
+  overflow: hidden;
+  animation: am_slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.AM_HEADER {
+  padding: 1.25rem 1.5rem;
+  background-color: var(--am-slate-50);
+  border-bottom: 1px solid var(--am-slate-200);
+  flex-shrink: 0;
+}
+
+.AM_HEADER h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--am-slate-900);
+}
+
+.AM_HEADER p {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: var(--am-slate-600);
+}
+
+/* --- 3. SCROLLABLE FORM BODY --- */
+.AM_FORM {
+  padding: 1.5rem;
+  overflow-y: auto; /* Internal scrolling for long content */
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.AM_GROUP {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.AM_GROUP label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--am-slate-700);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.AM_INPUT, 
+.AM_TEXTAREA, 
+.AM_SELECT {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid var(--am-slate-200);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: var(--am-slate-900);
+  background: #ffffff;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.AM_INPUT:focus, 
+.AM_TEXTAREA:focus, 
+.AM_SELECT:focus {
+  outline: none;
+  border-color: var(--am-primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* Responsive Row Logic */
+.AM_ROW {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .AM_ROW {
+    grid-template-columns: 1fr; /* Stack on mobile */
+  }
+}
+
+.AM_TEXTAREA {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+/* --- 4. IMAGE UPLOAD ZONE --- */
+.AM_UPLOAD_ZONE {
+  border: 2px dashed var(--am-slate-200);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  background: var(--am-slate-50);
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.AM_UPLOAD_ZONE.DRAGGING {
+  border-color: var(--am-primary);
+  background: rgba(37, 99, 235, 0.05);
+  transform: scale(1.02);
+}
+
+.AM_UPLOAD_ZONE:hover {
+  border-color: var(--am-slate-400);
+}
+
+.AM_UPLOAD_PLACEHOLDER i {
+  font-size: 2rem;
+  color: var(--am-slate-400);
+}
+
+.AM_UPLOAD_PLACEHOLDER p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--am-slate-700);
+}
+
+.AM_UPLOAD_PLACEHOLDER span {
+  font-size: 0.75rem;
+  color: var(--am-slate-400);
+}
+
+/* Preview State */
+.AM_IMAGE_PREVIEW {
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.AM_IMAGE_PREVIEW img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.AM_REMOVE_IMAGE {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--am-error);
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.AM_REMOVE_IMAGE:hover {
+  transform: scale(1.05);
+  background: #fff1f2;
+}
+
+/* --- 5. FOOTER & BUTTONS --- */
+.AM_FOOTER {
+  padding: 1.25rem 1.5rem;
+  background: var(--am-slate-50);
+  border-top: 1px solid var(--am-slate-200);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.AM_BTN_SEC, .AM_BTN_PRI {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.AM_BTN_SEC {
+  background: #ffffff;
+  border: 1px solid var(--am-slate-200);
+  color: var(--am-slate-700);
+}
+
+.AM_BTN_SEC:hover {
+  background: var(--am-slate-50);
+  border-color: var(--am-slate-400);
+}
+
+.AM_BTN_PRI {
+  background: var(--am-primary);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+}
+
+.AM_BTN_PRI:hover {
+  background: var(--am-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+}
+
+.AM_BTN_PRI:disabled {
+  background: var(--am-slate-400);
+  transform: none;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Mobile Button Adjustment */
+@media (max-width: 480px) {
+  .AM_FOOTER {
+    flex-direction: column-reverse; /* Stack buttons vertically */
+  }
+  .AM_BTN_SEC, .AM_BTN_PRI {
+    width: 100%;
+    padding: 14px;
+  }
+}
+
+/* --- ANIMATIONS --- */
+@keyframes am_fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes am_slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
